@@ -35,7 +35,7 @@ export default function Hero() {
   return (
     <div>
       <Swiper
-        className="mySwiper md:max-h-[670px]"
+        className="mySwiper md:max-h-[670px] mb-[100px]"
         spaceBetween={30}
         effect={'fade'}
         navigation={false}
@@ -58,9 +58,9 @@ export default function Hero() {
                       </div>
                     </div>
                     <div className='flex justify-center md:max-w-2/2'>
-                      <Image src={item.image} alt="" width={500} height={500} className={`${index === 1 ? 'max-w-auto md:max-w-[100%] md:max-h-[100%]' : 'max-w-[600px]'} max-h-[255px] md:max-w-[100%] md:max-h-[100%] bg-center ${index === 0 ? 'md:max-w-[340px] md:max-h-[500px] max-w-[200px] max-h-[200px]' : 'md:max-w-[350px]'}`} />
+                      <Image src={item.image} alt="" width={500} height={500} className={`w-auto h-auto ${index === 1 ? 'max-w-auto md:max-w-[100%] md:max-h-[100%]' : 'max-w-[600px]'} max-h-[255px] md:max-w-[100%] md:max-h-[100%] bg-center ${index === 0 ? 'md:max-w-[340px] md:max-h-[500px] max-w-[200px] max-h-[200px]' : 'md:max-w-[350px]'}`} />
                       {item.image2 && (
-                        <Image src={item?.image2} alt="" width={500} height={500} className={`bg-center md:max-w-[200px] md:max-h-[510px] md:pb-24`} />
+                        <Image src={item?.image2} alt="" width={500} height={500} className={`w-auto h-auto bg-center md:max-w-[200px] md:max-h-[510px] md:pb-24`} />
                       )}
                     </div>
                   </div>

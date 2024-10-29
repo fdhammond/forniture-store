@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import { Catamaran, Montserrat } from "next/font/google";
 import "./globals.css";
 import Hero from "./components/Hero";
+import ProductSection from "./components/ProductSection";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -32,6 +33,7 @@ export default function RootLayout({
         <Navbar />
         <div className="md:px-40 w-full h-full">
           <Hero />
+          <ProductSection />
           <div className="px-20">
             {children}
           </div>
