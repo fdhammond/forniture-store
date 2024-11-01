@@ -1,30 +1,21 @@
 'use client'
 import { useState, useEffect } from 'react'
-import useFetchProducts from '../hooks/useFetchProducts';
+import { useFetchProducts } from '../hooks/useFetchProducts';
 import ProductCard from "./ProductCard";
 import { Product } from '../types/types';
 import { motion } from 'framer-motion';
 import Loader from '../utils/Loader';
 export default function ProductSection() {
-    const [products, setProducts] = useState<Product[]>([])
     const [filterProducts, setFilterProducts] = useState<Product[]>([])
-    const [loading, setLoading] = useState<boolean>(false)
-
-    const productsData = useFetchProducts()
+    const [loading, setLoading] = useState(false);
+    const { products } = useFetchProducts()
 
     useEffect(() => {
-        if (!productsData) {
-            setLoading(true)
-        } else {
-            setLoading(false)
-        }
-        setProducts(productsData ?? []);
-        setFilterProducts(productsData ?? []);
-    }, [productsData]);
+        setFilterProducts(products ?? []);
+    }, [products]);
 
     const handleFilterProduct = (category: string) => {
         setLoading(true)
-
         setTimeout(() => {
             if (!category) {
                 setFilterProducts(products)
@@ -34,11 +25,12 @@ export default function ProductSection() {
                 })
                 setFilterProducts(newFilterProducts)
             }
-            setLoading(false)
         }, 1000)
+
+        setLoading(false)
     }
 
-    const filterListItems = `text-[#929292] active:text-[black] hover:text-black cursor-pointer tracking-widest`;
+    const filterListItems = `text-[#929292] active:text-[black] hover:text-black hover:font-medium cursor-pointer tracking-widest`;
 
     return (
         <div className='px-4'>
