@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
 import { Catamaran, Montserrat } from "next/font/google";
 import "./globals.css";
-import Hero from "./components/Hero";
-import ProductSection from "./components/ProductSection";
 import { ProductsProvider } from "./context/productContext";
 
 export const metadata: Metadata = {
@@ -33,14 +31,9 @@ export default function RootLayout({
       >
         <ProductsProvider>
           <Navbar />
-            <div className="md:px-40 w-full h-full">
-              <Hero />
-                <div className="w-full h-full">
-                  <ProductSection />
-                </div>
-              <div className="px-20">
-                {children}
-              </div>
+          <div className="">
+            {/* px-20 */}
+              {children}
             </div>
         </ProductsProvider>
       </body>
