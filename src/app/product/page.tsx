@@ -16,9 +16,9 @@ export default function ProductDetail() {
 
     return (
         <div className="bg-[#FAFAFA] mt-8 font-catamaran">
-            <div className="w-full h-auto grid grid-cols-2 justify-items-center">
-                <div className="w-full h-auto grid grid-cols-1 grid-flow-col-dense gap-0 mt-12">
-                    <div className="w-full h-auto grid grid-cols-1 justify-items-center">
+            <div className="w-full h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center">
+                <div className="w-full h-auto flex justify-center md:flex-row flex-col gap-0 mt-12">
+                    <div className="w-full h-auto grid grid-cols-4 md:grid-cols-1 justify-items-center mb-4 md:mb-0">
                         <Image src="https://res.cloudinary.com/dzkqopnby/image/upload/v1728169482/muebles-ecommerce/flower-vase_uv5dsy.jpg" alt="" width={100} height={120} className="max-w-[100px] max-h-[120px] object-cover object-center" />
                         <Image src="https://res.cloudinary.com/dzkqopnby/image/upload/v1728169482/muebles-ecommerce/flower-vase_uv5dsy.jpg" alt="" width={100} height={120} className="max-w-[100px] max-h-[120px] object-cover object-center" />
                         <Image src="https://res.cloudinary.com/dzkqopnby/image/upload/v1728169482/muebles-ecommerce/flower-vase_uv5dsy.jpg" alt="" width={100} height={120} className="max-w-[100px] max-h-[120px] object-cover object-center" />
@@ -27,9 +27,9 @@ export default function ProductDetail() {
                     <Image
                         src="https://res.cloudinary.com/dzkqopnby/image/upload/v1728169482/muebles-ecommerce/flower-vase_uv5dsy.jpg"
                         alt=""
-                        width={530}
-                        height={530}
-                        className="max-w-[530px] max-h-[530px] object-cover object-center"
+                        width={500}
+                        height={500}
+                        className="w-[100%] h-auto md:max-w-[530px] md:max-h-[530px] object-cover object-center"
                     />
                 </div>
                 <div className="w-full h-auto flex flex-col mt-12 pl-40 pr-20 justify-start">
