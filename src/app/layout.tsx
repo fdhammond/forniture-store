@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Navbar from "./components/Navbar";
 import { Catamaran, Montserrat } from "next/font/google";
 import "./globals.css";
-import { ProductsProvider } from "./context/productContext";
+import { ProductsProvider } from "./context/ProductContext";
+import { CartProvider } from "./context/CartContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -30,11 +31,13 @@ export default function RootLayout({
         className={`${catamaran.variable} ${montserrat.variable} antialiased`}
       >
         <ProductsProvider>
-          <Navbar />
-          <div className="">
-            {/* px-20 */}
-              {children}
+          <CartProvider>
+            <Navbar />
+            <div className="">
+              {/* px-20 */}
+                {children}
             </div>
+          </CartProvider>
         </ProductsProvider>
       </body>
     </html>

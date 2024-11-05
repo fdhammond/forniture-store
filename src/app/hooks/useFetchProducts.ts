@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductsContext } from "../context/productContext";
+import { ProductsContext } from "../context/ProductContext";
 import { ProductsContextType } from "../context/types";
 
 export const useFetchProducts = (): ProductsContextType => {

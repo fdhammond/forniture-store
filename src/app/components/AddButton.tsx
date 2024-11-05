@@ -1,8 +1,9 @@
 'use client'
 import { useState } from "react";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+import { CartProduct } from "../context/types";
 
-export default function AddButton() {
+export default function AddButton({name, price, addToCart}: { name: string, price: number, addToCart: (product: CartProduct) => void }) {
     const [quantity, setQuantity] = useState(1);
     const handleDecrement = () => {
         if (quantity > 1) setQuantity(quantity - 1);
@@ -13,6 +14,7 @@ export default function AddButton() {
     };
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        addToCart({ name, price, quantity });
     }
     return (
         <div className="text-black">
@@ -27,7 +29,7 @@ export default function AddButton() {
                             />
                         </span>
                         <input
-                            type="number"
+                            type="text"
                             value={quantity}
                             name="quantity"
                             className="text-[16px] w-full text-center"
@@ -41,7 +43,12 @@ export default function AddButton() {
                         </span>
                     </div>
                 </div>
-                <button className="text-sm bg-black text-white uppercase w-[190px] h-[50px] font-catamaran font-medium tracking-wider">Add to cart</button>
+                <button
+                    type="submit"
+                    onClick={() => addToCart({ name, price, quantity })}
+                    className="text-sm bg-black text-white uppercase w-[190px] h-[50px] font-catamaran font-medium tracking-wider"
+                >Add to cart
+                </button>
             </form>
         </div>
     )
