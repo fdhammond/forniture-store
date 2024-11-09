@@ -1,10 +1,18 @@
 'use client'
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
-import { CartProduct } from "../context/types";
+import { CartContext } from "../context/CartContext";
 
-export default function AddButton({name, price, addToCart}: { name: string, price: number, addToCart: (product: CartProduct) => void }) {
+export default function AddButton({name, price}: { name: string, price: number }) {
     const [quantity, setQuantity] = useState(1);
+
+    const cartContext = useContext(CartContext);
+    if (!cartContext) {
+        console.error("CartContext is not available. Ensure CartProvider wraps this component.");
+        return null
+    }
+
+    const { addToCart } = cartContext;
     const handleDecrement = () => {
         if (quantity > 1) setQuantity(quantity - 1);
     };
@@ -14,7 +22,7 @@ export default function AddButton({name, price, addToCart}: { name: string, pric
     };
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        addToCart({ name, price, quantity });
+        addToCart({ id: 0, name, price, image: '', category: [], quantity });
     }
     return (
         <div className="text-black">
@@ -45,7 +53,6 @@ export default function AddButton({name, price, addToCart}: { name: string, pric
                 </div>
                 <button
                     type="submit"
-                    onClick={() => addToCart({ name, price, quantity })}
                     className="text-sm bg-black text-white uppercase w-[190px] h-[50px] font-catamaran font-medium tracking-wider"
                 >Add to cart
                 </button>

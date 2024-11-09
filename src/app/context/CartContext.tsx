@@ -19,7 +19,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const [products, setProducts] = useState<Product[]>([]);
 
     const addToCart = (product: Product) => {
-        setProducts((prevProducts) => [...prevProducts, product]);
+        setProducts((prevProducts) => {
+            const existingProductIndex = prevProducts.findIndex((p) => p.id === product.id);
+
+            if (existingProductIndex !== -1) {
+                // Update the quantity of the existing product
+                return prevProducts.map((p, index) =>
+                    index === existingProductIndex
+                        ? { ...p, quantity: p.quantity + product.quantity }
+                        : p
+                );
+            }
+
+            // Add the new product with its initial quantity
+            return [...prevProducts, product];
+        });
     };
 
     console.log(products);

@@ -1,19 +1,10 @@
 'use client'
 
-import { useContext } from 'react';
 import Image from 'next/image';
 import Stars from '../components/Stars';
 import AddButton from '../components/AddButton';
-import { CartContext } from '../context/CartContext';
 
 export default function ProductDetail() {
-    const cartContext = useContext(CartContext);
-    if (!cartContext) {
-        console.error("CartContext is not available. Ensure CartProvider wraps this component.");
-    }
-
-    const { addToCart } = cartContext
-
     return (
         <div className="bg-[#FAFAFA] mt-8 font-catamaran">
             <div className="w-full h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center">
@@ -50,7 +41,6 @@ export default function ProductDetail() {
                         <AddButton
                             name="Flower Vase"
                             price={19.99}
-                            addToCart={addToCart}
                         />
                     </div>
                 </div>

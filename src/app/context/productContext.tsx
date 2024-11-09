@@ -36,3 +36,12 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({ children }) 
         </ProductsContext.Provider>
     );
 }
+
+export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+
+    return (
+        <ProductsProvider>
+            {children}
+        </ProductsProvider>
+    )
+}
