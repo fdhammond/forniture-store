@@ -31,7 +31,7 @@ export default function Product({params}: ProductDetailProps) {
                     notFound();
                 }
             } else {
-                setProduct(foundProduct);
+                setProduct({...foundProduct, quantity: 1});
             }
         };
 
