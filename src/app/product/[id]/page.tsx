@@ -7,6 +7,7 @@ import AddButton from '../../components/AddButton';
 import { useFetchProducts } from '../../hooks/useFetchProducts';
 import { useState, useEffect } from 'react';
 import type { Product } from '../../types/types';
+import RelatedProducts from '../../components/RelatedProducts';
 
 interface ProductDetailProps {
   params: { id: string };
@@ -86,7 +87,7 @@ export default function Product({params}: ProductDetailProps) {
         <div className="w-full h-full font-catamaran">
             <div className='bg-[#FAFAFA] mt-8 border border-b-[#b8b8b8]'>
                 {product && (
-                    <div className="w-full h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center md:justify-items-start md:px-[10%]">
+                    <div className="w-full h-auto grid grid-cols-1 md:grid-cols-2 justify-items-center md:justify-items-start md:px-[60px]">
                         <div className="w-full h-full flex justify-center items-center md:flex-row flex-col gap-4 mt-12">
                             <div className="w-full h-full grid grid-cols-4 md:grid-cols-1 justify-items-start mb-4 md:mb-0 gap-4">
                                 <Image src={product.image} alt="" width={100} height={120} className="w-auto h-full object-cover object-center" />
@@ -140,18 +141,23 @@ export default function Product({params}: ProductDetailProps) {
                     </div>
                 )}
             </div>
-            <div className="pt-[70px] pb-16 px-[60px] md:px-[10%] w-full text-black font-catamaran">
+            <div className="pt-[70px] pb-16 px-[60px] md:px-[60px] w-full text-black font-catamaran border border-b-[#b8b8b8]">
                 {productInformationLabels.map((label, index) => (
                     <div
                         key={index}
                         className={`${selectedInformationButton === index ? '' : 'hidden'}`}
                     >
-                        <h2 className="text-black text-md uppercase mb-4 font-bold tracking-[3.7px]">
+                        <h2 className="text-black text-xl uppercase mb-4 font-bold tracking-[3.7px]">
                             {label}
                         </h2>
-                        {productInformationContent[index]}
+                        {productInformationContent[index as keyof typeof productInformationContent]}
                     </div>
                 ))}
+            </div>
+            <div className='px-[60px] pt-[92px]'>
+                {product && (
+                    <RelatedProducts category={product.category} productId={product.id} />
+                )}
             </div>
         </div>
     );
